@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Hitashi 🎀</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Blur background overlay */
+.blur-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Center container */
+.container {
+    text-align: center;
+    z-index: 2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Heading style */
+.main-title {
+    font-size: 32px;
+    color: #ff4d94;
+    margin-bottom: 20px;
+}
+
+/* Button style */
+button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background-color: #ff80bf;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4da6;
+    transform: scale(1.05);
+}
+
+/* Letter section */
+.letter-section {
+    display: none;
+    padding: 40px;
+    max-width: 600px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.letter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #ff3399;
+    margin-bottom: 20px;
+}
+
+.letter-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+    animation: fadeText 4s infinite alternate;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeText {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="blur-overlay"></div>
+
+<div class="container" id="welcome">
+    <h1 class="main-title">Hey Hitashi 🎀</h1>
+    <button onclick="openLetter()">Click Here</button>
+</div>
+
+<div class="letter-section" id="letter">
+    <h1 class="letter-title">Happy Birthday 🎂</h1>
+    <p class="letter-text">
+        Dear Hitashi,<br><br>
+        Wishing you a very Happy Birthday! 🎉  
+        May this year bring you happiness, peace, success and everything you secretly wish for.  
+        You are someone who deserves genuine smiles and beautiful moments in life.  
+        Stay the same caring, strong and amazing person you are.  
+        I’m really glad to know you and I hope this birthday becomes one of your most special days.  
+        Keep shining always ✨
+        <br><br>
+        – Your Friend 🤍
+    </p>
+</div>
+
+<!-- Background Music -->
+<audio id="bg-music" loop>
+    <source src="your-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openLetter() {
+    document.getElementById("welcome").style.display = "none";
+    document.querySelector(".blur-overlay").style.display = "none";
+    document.getElementById("letter").style.display = "block";
+
+    var music = document.getElementById("bg-music");
+    music.play();
+}
+</script>
+
+</body>
+</html>
