@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffd6e7;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Center box */
+.box {
+  text-align: center;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/* Buttons */
+.btn {
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: #ff99cc;
+  font-size: 13px;
+}
+
+/* Fade control */
+.show {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: #ff4d88;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  font-size: 30px;
+  animation: fly 6s linear forwards;
+}
+
+@keyframes fly {
+  0% { transform: translateY(100vh); }
+  100% { transform: translateY(-10vh); }
+}
+
+img {
+  max-width: 220px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="main"></div>
+<audio id="music" src="your-music.mp3"></audio>
+
+<script>
+
+// Floating hearts
+setInterval(() => {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "♡";
+  h.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 400);
+
+
+// Helper: fade text
+function show(content, duration, next) {
+  const main = document.getElementById("main");
+
+  main.innerHTML = `<div class="box">${content}</div>`;
+  const box = document.querySelector(".box");
+
+  setTimeout(() => box.classList.add("show"), 100);
+
+  if (duration) {
+    setTimeout(() => {
+      box.classList.remove("show");
+      setTimeout(next, 1000);
+    }, duration);
+  }
+}
+
+
+// FLOW
+
+show("✨ Its Your Special Day Yeyey!", 4000, () => {
+  show("To Make Something Special For You Because You Are Special To Me!", 4000, () => {
+
+    show(`
+      Do You Wanna See What I Made?<br>
+      <button class="btn" onclick="yes()">Yes!</button>
+      <button class="btn">No</button>
+    `);
+  });
+});
+
+
+function yes() {
+  show("Have A Look At It, Madam Ji", 2000, lights);
+}
+
+function lights() {
+  document.body.style.background = "black";
+
+  show(`<button class="btn" style="background:#66ccff" onclick="onLights()">Lights On</button>`);
+}
+
+function onLights() {
+  document.body.style.background = "#ffd6e7";
+  show(`<button class="btn" onclick="playMusic()">Play Music</button>`);
+}
+
+function playMusic() {
+  document.getElementById("music").play();
+
+  show(`<button class="btn" onclick="decorate()">Decorate</button>`);
+}
+
+function decorate() {
+  show("Decorating...", 1500, () => {
+    show(`
+      <img src="your-sticker.png"><br>
+      <button class="btn" onclick="balloons()">Fly The Balloons</button>
+    `);
+  });
+}
+
+
+// Balloons one by one
+function balloons() {
+  show("Balloons Flying...", 1500, () => {
+
+    let count = 0;
+    let interval = setInterval(() => {
+      let b = document.createElement("div");
+      b.className = "balloon";
+      b.innerText = "🎈";
+      b.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(b);
+
+      count++;
+      if (count >= 8) clearInterval(interval);
+    }, 2000);
+
+    show(`
+      <img src="your-sticker.png"><br>
+      <button class="btn" onclick="cake()">Lets Cut The Cake Madam Ji</button>
+    `);
+  });
+}
+
+function cake() {
+  show("Cutting The Cake...", 1500, () => {
+    show(`
+      <img src="your-sticker.png"><br>
+      <img src="cake.png"><br>
+      <button class="btn" onclick="message()">Well, I Have A Message For You Madam Ji</button>
+    `);
+  });
+}
+
+function message() {
+  show("Opening Message...", 1500, () => {
+    show(`
+      <img src="your-sticker.png"><br>
+      <img src="cake.png"><br>
+      <div>[ Your Letter Will Come Here 💌 ]</div>
+    `);
+  });
+}
+
+</script>
+
+</body>
+</html>
