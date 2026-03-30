@@ -22,7 +22,7 @@ body {
   text-align: center;
 }
 
-/* TOP LAYOUT */
+/* TOP layout */
 .top {
   position: absolute;
   top: 20px;
@@ -98,11 +98,11 @@ img {
 <body>
 
 <div id="main"></div>
-<audio id="music" src="your-music.mp3"></audio>
+<audio id="music" src="music.mp3"></audio>
 
 <script>
 
-// Hearts
+// HEARTS (only pink bg)
 let hearts = setInterval(() => {
   if (document.body.style.background === "black") return;
 
@@ -115,7 +115,9 @@ let hearts = setInterval(() => {
 }, 400);
 
 
-// Fade helper
+// FADE HELPERS
+const main = document.getElementById("main");
+
 function showStart(content, duration, next) {
   main.innerHTML = `<div class="center"><div class="start-box">${content}</div></div>`;
   let el = document.querySelector(".start-box");
@@ -146,8 +148,6 @@ function showTop(content, duration, next) {
 
 
 // START FLOW
-const main = document.getElementById("main");
-
 showStart("✨ Its Your Special Day Yeyey!", 4000, () => {
   showStart("To Make Something Special For You Because You Are Special To Me!", 4000, () => {
     showStart(`
@@ -186,7 +186,7 @@ function decorate() {
   showTop("Decorating...", 1500, () => {
     showTop(`
       <div>Decorate</div>
-      <img src="IMG_9260.png"><br>
+      <img src="sticker.png"><br>
       <button class="btn" onclick="balloons()">Fly The Balloons</button>
     `);
   });
@@ -209,7 +209,7 @@ function balloons() {
 
     showTop(`
       <div>Fly The Balloons</div>
-      <img src="IMG_9260.png"><br>
+      <img src="sticker.png"><br>
       <button class="btn" onclick="cake()">Lets Cut The Cake Madam Ji</button>
     `);
   });
@@ -219,34 +219,37 @@ function cake() {
   showTop("Cutting The Cake...", 1500, () => {
     showTop(`
       <div>Lets Cut The Cake Madam Ji</div>
-      <img src="IMG_9260.png"><br>
-      <img src="IMG_9257.png"><br>
+      <img src="sticker.png"><br>
+      <img src="cake.png"><br>
       <button class="btn" onclick="message()">Well, I Have A Message For You Madam Ji</button>
     `);
   });
 }
 
-<script>
 function message() {
   showTop("Opening Message...", 1500, () => {
     showTop(`
-      <div style="font-weight: bold; margin-bottom:10px;">
+      <div style="font-weight:bold; margin-bottom:10px;">
         Dear Madam Ji,
       </div>
 
-      <div style="font-size:14px; line-height:1.5; max-width:300px; margin:auto;">
+      <div style="font-size:14px; max-width:300px; margin:auto; line-height:1.5;">
         Even though we have met recently and I guess we know nothing about each other, but this was the way to show you how much you mean to me. This is a way to show that our friendship has just started. I hope we will be making some great memories together. I’m starting this new year with a new friend like you, and I hope our friendship lasts forever.
       </div>
 
-      <div style="margin-top:12px; color:#ff4d88; font-weight:500;">
+      <div style="margin-top:12px; color:#ff4d88;">
         And On Your Special Day, I Wish You The Happiest Birthday.
       </div>
 
       <br>
-      <img src="IMG_9260.png">
+      <img src="sticker.png">
       <br>
-      <img src="IMG_9257.png">
+      <img src="cake.png">
     `);
   });
 }
+
 </script>
+
+</body>
+</html>
